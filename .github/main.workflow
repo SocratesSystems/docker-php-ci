@@ -8,7 +8,7 @@ action "Docker Login" {
   secrets = ["DOCKER_USERNAME", "DOCKER_PASSWORD"]
 }
 
-action "GitHub Action for Docker" {
+action "Build Image" {
   uses = "actions/docker/cli@76ff57a"
   needs = ["Docker Login"]
   args = "build -t socratessystems/php-ci ."
@@ -16,6 +16,6 @@ action "GitHub Action for Docker" {
 
 action "Push Image" {
   uses = "actions/docker/cli@76ff57a"
-  needs = ["GitHub Action for Docker"]
   args = "push socratessystems/php-ci:latest"
+  needs = ["Build Image"]
 }

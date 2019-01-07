@@ -1,4 +1,4 @@
-workflow "New workflow" {
+workflow "Build and Push Docker Image" {
   on = "push"
   resolves = ["Push Image"]
 }
